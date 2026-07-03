@@ -1,0 +1,26 @@
+function createProfessionalQualityLogFile() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var ws = ss.insertSheet("Quality Log");
+  
+  // Headers mirroring your RTO project structure
+  var headers = [["n", "Review Date", "Deliverable Reviewed", "Required Findings", "Actual Findings", "Sign off"]];
+  
+  // The data based on your project
+  var data = [
+    ["QL-01", "31-Mar", "Project Architecture", "Class-based modular structure", "Classes modular and connected", "Approved"],
+    ["QL-02", "02-Apr", "Auth Service", "Secure login with role-based routing", "Login valid for all roles", "Approved"],
+    ["QL-03", "03-Apr", "Driver Registration", "Validation for age and license", "Age check logic correct", "Approved"],
+    ["QL-04", "04-Apr", "Vehicle Registration", "Valid format check for Reg No", "Format validation active", "Approved"],
+    ["QL-05", "05-Apr", "Tax Renewal Logic", "15-year expiry for private vehicles", "Expiry logic verified", "Approved"],
+    ["QL-06", "06-Apr", "Violation System", "Fine calculation & escalation", "Penalty logic verified", "Approved"],
+    ["QL-07", "07-Apr", "Compliance Check", "Daily batch non-compliance flag", "Flagging logic accurate", "Approved"],
+    ["QL-08", "08-Apr", "Reporting Module", "Data filtering by month/year", "Report generation accurate", "Approved"],
+    ["QL-09", "09-Apr", "UI/UX Flow", "Menu routing per role", "Navigation flows correctly", "Approved"],
+    ["QL-10", "10-Apr", "Final System Demo", "End-to-end RTO workflow", "All modules integrated", "Approved"]
+  ];
+  
+  ws.getRange(1, 1, 1, 6).setValues(headers).setFontWeight("bold").setBackground("#d9d9d9");
+  ws.getRange(2, 1, 10, 6).setValues(data);
+  
+  Browser.msgBox("Quality Log Created! Now click 'File > Download > Microsoft Excel (.xlsx)' to save it.");
+}
